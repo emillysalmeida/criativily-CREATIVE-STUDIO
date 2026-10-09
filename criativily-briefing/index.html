@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulário de Briefing de Projeto para Criativily — Creative Studio. Conte-nos sobre a sua ideia e transforme a sua presença digital.">
+  <title>Briefing de Projeto — Criativily | Creative Studio</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="main-header" role="banner">
+      <div class="brand-container">
+        <img src="assets/lavender-flower.svg" alt="Ícone de flor de lavanda Criativily" class="brand-logo" width="42" height="50">
+        <div class="brand-text">
+          <span class="brand-name">criativily</span>
+          <span class="brand-tagline">CREATIVE STUDIO</span>
+        </div>
+      </div>
+      <div class="brand-slogan-badge">
+        <span>Ideias criativas. Experiências digitais.</span>
+      </div>
+    </header>
+
+    <!-- Main Content Form Box -->
+    <main class="form-card" role="main">
+      <!-- Introduction Header -->
+      <section class="intro-section">
+        <h1 class="intro-title">Vamos dar vida à sua ideia?</h1>
+        <p class="intro-description">
+          Conte um pouco sobre o seu projeto. Suas respostas vão me ajudar a entender o que você precisa e a pensar na melhor solução digital para você.
+        </p>
+        <div class="intro-meta">
+          <p class="intro-aux">
+            Reserve alguns minutos para responder. Não precisa ter tudo definido: a ideia é entender o que você imagina.
+          </p>
+          <div class="time-estimate">
+            <svg class="time-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Tempo estimado: ~5 min</span>
+          </div>
+        </div>
+        
+        <!-- Notice about 3-4 days initial proposal -->
+        <div class="deadline-banner">
+          <span class="deadline-badge">Informação importante</span>
+          <p class="deadline-text">
+            Após o envio das suas respostas, entrarei em contato em até <strong>3 a 4 dias úteis</strong> com a ideia inicial e os primeiros direcionamentos para o seu site.
+          </p>
+        </div>
+      </section>
+
+      <!-- Progress Section -->
+      <div class="progress-container" aria-label="Progresso do formulário">
+        <div class="progress-info">
+          <span id="step-counter" class="step-counter">Etapa 1 de 5: Sobre o projeto</span>
+          <span id="progress-percent" class="progress-percent">20%</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 20%;"></div>
+        </div>
+        <div class="step-dots" id="step-dots">
+          <button type="button" class="step-dot active" data-step="1" title="Etapa 1: Sobre o projeto" aria-label="Ir para Etapa 1"></button>
+          <button type="button" class="step-dot" data-step="2" title="Etapa 2: Objetivos e funcionalidades" aria-label="Ir para Etapa 2"></button>
+          <button type="button" class="step-dot" data-step="3" title="Etapa 3: Identidade visual e materiais" aria-label="Ir para Etapa 3"></button>
+          <button type="button" class="step-dot" data-step="4" title="Etapa 4: Requisitos e informações adicionais" aria-label="Ir para Etapa 4"></button>
+          <button type="button" class="step-dot" data-step="5" title="Etapa 5: Revisão e envio" aria-label="Ir para Etapa 5"></button>
+        </div>
+      </div>
+
+      <!-- Main Form -->
+      <form id="briefing-form" novalidate autocomplete="off">
+        
+        <!-- ETAPA 1: Sobre o projeto -->
+        <fieldset class="form-step active" id="step-panel-1" data-step="1">
+          <legend class="sr-only">Etapa 1: Sobre o projeto</legend>
+          <h2 class="step-heading">Etapa 1 — Sobre o projeto</h2>
+          
+          <!-- Pergunta 1 -->
+          <div class="form-group" id="group-q1">
+            <label for="q1_nome" class="form-label required">
+              1. Qual é o nome da empresa, marca, projeto ou iniciativa?
+            </label>
+            <p class="field-hint">Conte também brevemente o que você faz e para quem o projeto se destina.</p>
+            <input type="text" id="q1_nome" name="q1_nome" class="form-input" placeholder="Ex: Lumina Arquitetura — Studio de design de interiores voltado para residências de alto padrão" required>
+            <div class="error-message" id="error-q1_nome" role="alert">Por favor, informe o nome ou descrição inicial da sua empresa/projeto.</div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div class="form-group" id="group-q2">
+            <label class="form-label required">
+              2. Qual é o principal objetivo do site?
+            </label>
+            <div class="options-grid single-select" role="radiogroup" aria-required="true" id="q2_options">
+              <label class="option-card">
+                <input type="radio" name="q2_objetivo" value="Apresentar uma empresa, marca ou projeto" required>
+                <span class="custom-radio"></span>
+                <span class="option-text">Apresentar uma empresa, marca ou projeto</span>
+              </label>
+              
+              <label class="option-card">
+                <input type="radio" name="q2_objetivo" value="Divulgar produtos ou serviços">
+                <span class="custom-radio"></span>
+                <span class="option-text">Divulgar produtos ou serviços</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q2_objetivo" value="Gerar contatos e captar potenciais clientes">
+                <span class="custom-radio"></span>
+                <span class="option-text">Gerar contatos e captar potenciais clientes</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q2_objetivo" value="Vender produtos ou serviços on-line">
+                <span class="custom-radio"></span>
+                <span class="option-text">Vender produtos ou serviços on-line</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q2_objetivo" value="Compartilhar conteúdos, notícias ou informações">
+                <span class="custom-radio"></span>
+                <span class="option-text">Compartilhar conteúdos, notícias ou informações</span>
+              </label>
+
+              <label class="option-card" id="card-q2-outro">
+                <input type="radio" name="q2_objetivo" value="Outro" id="q2_radio_outro">
+                <span class="custom-radio"></span>
+                <span class="option-text">Outro</span>
+              </label>
+            </div>
+
+            <!-- Campo condicional se 'Outro' for selecionado -->
+            <div class="conditional-box hidden" id="box-q2-outro">
+              <label for="q2_outro_detalhe" class="form-label required">Especifique o objetivo:</label>
+              <input type="text" id="q2_outro_detalhe" name="q2_outro_detalhe" class="form-input" placeholder="Descreva o objetivo do seu site...">
+              <div class="error-message" id="error-q2_outro_detalhe" role="alert">Por favor, especifique o objetivo do seu projeto.</div>
+            </div>
+
+            <div class="error-message" id="error-q2_objetivo" role="alert">Por favor, selecione o objetivo principal do seu site.</div>
+          </div>
+        </fieldset>
+
+
+        <!-- ETAPA 2: Objetivos e funcionalidades -->
+        <fieldset class="form-step" id="step-panel-2" data-step="2">
+          <legend class="sr-only">Etapa 2: Objetivos e funcionalidades</legend>
+          <h2 class="step-heading">Etapa 2 — Objetivos e funcionalidades</h2>
+
+          <!-- Pergunta 3 -->
+          <div class="form-group" id="group-q3">
+            <label for="q3_publico" class="form-label">
+              3. Quem é o público que você deseja alcançar?
+            </label>
+            <p class="field-hint">Descreva as pessoas que você quer atingir com o site (idade, perfil, hábitos, necessidades).</p>
+            <textarea id="q3_publico" name="q3_publico" class="form-textarea" rows="4" placeholder="Ex: Clientes urbanos entre 25 e 45 anos que buscam serviços de arquitetura personalizada e valorizam estética sofisticada..."></textarea>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div class="form-group" id="group-q4">
+            <label for="q4_acao" class="form-label">
+              4. O que você gostaria que os visitantes fizessem ao acessar o site?
+            </label>
+            <p class="field-hint">Exemplos: Entrar em contato, solicitar um orçamento, realizar uma compra, conhecer seus serviços ou preencher um formulário.</p>
+            <textarea id="q4_acao" name="q4_acao" class="form-textarea" rows="4" placeholder="Ex: Clicar no botão do WhatsApp para solicitar um orçamento direto, agendar uma reunião inicial ou baixar o catálogo de serviços."></textarea>
+          </div>
+
+          <!-- Pergunta 5 -->
+          <div class="form-group" id="group-q5">
+            <label class="form-label">
+              5. Quais páginas ou funcionalidades você considera essenciais?
+            </label>
+            <p class="field-hint">Selecione todas as opções que se aplicam ao seu projeto.</p>
+            
+            <div class="options-grid multi-select" id="q5_options">
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Página inicial">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Página inicial</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Sobre a empresa ou projeto">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Sobre a empresa ou projeto</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Serviços ou produtos">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Serviços ou produtos</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Portfólio">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Portfólio</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Contato">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Contato</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Blog ou notícias">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Blog ou notícias</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Formulário de contato">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Formulário de contato</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Integração com WhatsApp">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Integração com WhatsApp</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Loja virtual">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Loja virtual</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Área de login">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Área de login</span>
+              </label>
+
+              <label class="option-card highlight-option">
+                <input type="checkbox" name="q5_paginas" value="Ainda não sei" id="q5_check_nao_sei">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Ainda não sei</span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="q5_paginas" value="Outro" id="q5_check_outro">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">Outro</span>
+              </label>
+            </div>
+
+            <!-- Campo complementar para Outro em Q5 -->
+            <div class="conditional-box hidden" id="box-q5-outro">
+              <label for="q5_outro_detalhe" class="form-label">Descreva as outras páginas ou funcionalidades desejadas:</label>
+              <input type="text" id="q5_outro_detalhe" name="q5_outro_detalhe" class="form-input" placeholder="Ex: Calculadora de orçamento, mapa interativo, galeria 3D...">
+            </div>
+
+            <!-- Campo complementar para detalhes adicionais gerais de Q5 -->
+            <div class="sub-field-box">
+              <label for="q5_detalhes_gerais" class="form-label">Detalhes adicionais sobre funcionalidades (opcional):</label>
+              <textarea id="q5_detalhes_gerais" name="q5_detalhes_gerais" class="form-textarea" rows="2" placeholder="Conte mais detalhes se quiser..."></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+
+        <!-- ETAPA 3: Identidade visual e materiais -->
+        <fieldset class="form-step" id="step-panel-3" data-step="3">
+          <legend class="sr-only">Etapa 3: Identidade visual e materiais</legend>
+          <h2 class="step-heading">Etapa 3 — Identidade visual e materiais</h2>
+
+          <!-- Pergunta 6 -->
+          <div class="form-group" id="group-q6">
+            <label class="form-label">
+              6. Você possui referências visuais ou sites que gosta? (Opcional)
+            </label>
+            <div class="sub-field-box">
+              <label for="q6_links" class="form-label-sub">Links de sites ou referências inspiradoras (um por linha):</label>
+              <textarea id="q6_links" name="q6_links" class="form-textarea" rows="3" placeholder="https://exemplo1.com&#10;https://exemplo2.com"></textarea>
+            </div>
+            
+            <div class="sub-field-box">
+              <label for="q6_gostos" class="form-label-sub">O que você mais gosta nessas referências?</label>
+              <textarea id="q6_gostos" name="q6_gostos" class="form-textarea" rows="3" placeholder="Ex: Gosto da tipografia elegante, da paleta de cores neutras e das animações suaves de transição de página."></textarea>
+            </div>
+          </div>
+
+          <!-- Pergunta 7 -->
+          <div class="form-group" id="group-q7">
+            <label class="form-label">
+              7. Já existe uma identidade visual definida?
+            </label>
+            <div class="options-grid single-select" role="radiogroup" id="q7_options">
+              <label class="option-card">
+                <input type="radio" name="q7_identidade" value="Sim, temos logotipo, cores e tipografia definidos.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Sim, temos logotipo, cores e tipografia definidos.</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q7_identidade" value="Parcialmente, temos alguns elementos visuais.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Parcialmente, temos alguns elementos visuais.</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q7_identidade" value="Não, precisamos definir esses elementos.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Não, precisamos definir esses elementos.</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q7_identidade" value="Não se aplica.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Não se aplica.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pergunta 8 -->
+          <div class="form-group" id="group-q8">
+            <label class="form-label">
+              8. Você já possui os materiais necessários para o site?
+            </label>
+            <div class="options-grid single-select" role="radiogroup" id="q8_options">
+              <label class="option-card">
+                <input type="radio" name="q8_materiais" value="Sim, já tenho os materiais organizados.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Sim, já tenho os materiais organizados.</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q8_materiais" value="Tenho parte dos materiais.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Tenho parte dos materiais.</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q8_materiais" value="Ainda preciso produzir ou organizar os materiais.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Ainda preciso produzir ou organizar os materiais.</span>
+              </label>
+
+              <label class="option-card">
+                <input type="radio" name="q8_materiais" value="Preciso de ajuda para entender o que será necessário.">
+                <span class="custom-radio"></span>
+                <span class="option-text">Preciso de ajuda para entender o que será necessário.</span>
+              </label>
+            </div>
+
+            <div class="sub-field-box">
+              <label for="q8_observacoes" class="form-label-sub">Observações sobre materiais (opcional):</label>
+              <textarea id="q8_observacoes" name="q8_observacoes" class="form-textarea" rows="2" placeholder="Ex: Já temos os textos redigidos, mas as fotos dos produtos ainda serão produzidas."></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+
+        <!-- ETAPA 4: Requisitos e informações adicionais -->
+        <fieldset class="form-step" id="step-panel-4" data-step="4">
+          <legend class="sr-only">Etapa 4: Requisitos e informações adicionais</legend>
+          <h2 class="step-heading">Etapa 4 — Requisitos e informações adicionais</h2>
+
+          <!-- Pergunta 9 -->
+          <div class="form-group" id="group-q9">
+            <label for="q9_requisitos" class="form-label">
+              9. Existe alguma necessidade técnica ou requisito específico? (Opcional)
+            </label>
+            <p class="field-hint">Exemplos: domínio próprio, hospedagem, integrações, painel administrativo, atualização de conteúdo ou sistemas que você já utiliza.</p>
+            <textarea id="q9_requisitos" name="q9_requisitos" class="form-textarea" rows="4" placeholder="Ex: Precisamos de integração com a ferramenta de e-mail marketing ActiveCampaign e de um formulário de agendamento online..."></textarea>
+          </div>
+
+          <!-- Pergunta 10 -->
+          <div class="form-group" id="group-q10">
+            <label for="q10_informacoes" class="form-label">
+              10. Existe alguma outra informação ou observação importante? (Opcional)
+            </label>
+            <p class="field-hint">Compartilhe qualquer detalhe adicional que considere relevante para a criação do seu site.</p>
+            <textarea id="q10_informacoes" name="q10_informacoes" class="form-textarea" rows="4" placeholder="Ex: Gostaria de alinhar alguns detalhes de branding na reunião inicial, preferência de horário para contato, etc."></textarea>
+          </div>
+        </fieldset>
+
+
+        <!-- ETAPA 5: Revisão e envio -->
+        <fieldset class="form-step" id="step-panel-5" data-step="5">
+          <legend class="sr-only">Etapa 5: Revisão e envio</legend>
+          <h2 class="step-heading">Etapa 5 — Revisão e envio</h2>
+          
+          <div class="review-intro">
+            <p>Confira abaixo o resumo das respostas preenchidas. Você pode revisar e editar qualquer etapa antes de enviar.</p>
+          </div>
+
+          <!-- Summary container populated dynamically -->
+          <div class="review-summary-container" id="review-summary-container">
+            <!-- Dynamic review cards will be rendered here -->
+          </div>
+
+          <!-- Final submission area -->
+          <div class="submit-action-box">
+            <h3 class="submit-box-title">Como deseja enviar as suas respostas?</h3>
+            <p class="submit-box-desc">
+              Escolha uma das opções abaixo para preparar o envio das respostas. Suas informações serão organizadas em uma mensagem clara e legível no seu aplicativo.
+            </p>
+
+            <!-- Notice modal / toast area -->
+            <div class="send-notice-box hidden" id="send-notice-box" role="status">
+              <div class="send-notice-icon">✨</div>
+              <div class="send-notice-content">
+                <strong>Seu briefing está preparado!</strong>
+                <p>Confira as respostas no seu aplicativo e finalize o envio por lá.</p>
+              </div>
+            </div>
+
+            <div class="submit-buttons-grid">
+              <!-- Option A: WhatsApp -->
+              <button type="button" class="btn-submit btn-whatsapp" id="btn-send-whatsapp">
+                <svg class="btn-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.762.459 3.48 1.332 5.001l-1.416 5.176 5.3-1.39a9.923 9.923 0 004.77 1.215h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.668-1.037-5.176-2.922-7.062a9.922 9.922 0 00-7.067-2.94remzm0 18.234h-.003a8.232 8.232 0 01-4.195-1.155l-.301-.179-3.118.818.832-3.041-.197-.313a8.24 8.24 0 01-1.265-4.38c.002-4.558 3.711-8.267 8.269-8.267 2.208 0 4.283.861 5.845 2.424a8.217 8.217 0 012.417 5.842c-.002 4.56-3.712 8.271-8.269 8.271zm4.532-6.195c-.248-.124-1.468-.724-1.696-.807-.228-.083-.394-.124-.559.124-.165.248-.641.807-.786.973-.145.165-.29.186-.538.062-.248-.124-1.047-.386-1.996-1.232-.738-.658-1.237-1.47-1.382-1.718-.145-.248-.015-.382.109-.505.111-.111.248-.29.372-.435.124-.145.165-.248.248-.414.083-.165.041-.311-.021-.435-.062-.124-.559-1.346-.766-1.843-.201-.484-.407-.418-.559-.426-.145-.008-.311-.008-.476-.008s-.435.062-.662.311c-.228.248-.869.849-.869 2.071 0 1.222.89 2.401 1.014 2.567.124.165 1.751 2.674 4.242 3.75.593.256 1.056.409 1.417.524.596.19 1.138.163 1.567.099.479-.071 1.468-.6 1.674-1.18.207-.579.207-1.076.145-1.18-.062-.104-.228-.166-.476-.29z"/>
+                </svg>
+                <span>Enviar pelo WhatsApp</span>
+              </button>
+
+              <!-- Option B: Email -->
+              <button type="button" class="btn-submit btn-email" id="btn-send-email">
+                <svg class="btn-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Enviar por e-mail</span>
+              </button>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Form Navigation Footer -->
+        <nav class="form-navigation" aria-label="Navegação das etapas do formulário">
+          <button type="button" class="btn-nav btn-secondary hidden" id="btn-prev">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Voltar</span>
+          </button>
+
+          <button type="button" class="btn-nav btn-primary" id="btn-next">
+            <span>Continuar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </nav>
+
+      </form>
+    </main>
+
+    <!-- Footer Credit -->
+    <footer class="main-footer" role="contentinfo">
+      <p class="footer-text">
+        Criativily — Creative Studio &copy; <span id="current-year">2026</span>. Todos os direitos reservados.
+      </p>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

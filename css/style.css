@@ -1,0 +1,939 @@
+/* ==========================================================================
+   Criativily — Creative Studio | Design System & Styling
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Variables)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color Palette */
+  --bg-primary: #292632;          /* Main dark background */
+  --bg-surface: #322e3d;          /* Card & panel background */
+  --bg-surface-hover: #3b3748;    /* Interactive surface hover */
+  --bg-input: #211e29;            /* Input fields background */
+  --bg-input-focus: #1b1822;      /* Focused input background */
+  
+  --color-lilac: #B69AE8;          /* Main accent color */
+  --color-lilac-hover: #a180dc;    /* Main accent hover */
+  --color-lilac-glow: rgba(182, 154, 232, 0.25);
+  
+  --color-green: #D1E8B2;          /* Secondary detail accent */
+  --color-lavender: #EDE5FA;       /* Soft lilac / light text */
+  --color-gray: #A8A3B5;           /* Muted text & borders */
+  --color-white: #FAF9FC;          /* Primary crisp text */
+  
+  --color-border: rgba(182, 154, 232, 0.16);
+  --color-border-hover: rgba(182, 154, 232, 0.35);
+  --color-border-active: #B69AE8;
+  
+  --color-error: #FF6B81;
+  --color-error-bg: rgba(255, 107, 129, 0.1);
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #20bd5a;
+
+  /* Typography */
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Layout & Spacing */
+  --max-width-card: 780px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  /* Shadows & Effects */
+  --shadow-card: 0 20px 50px rgba(15, 13, 20, 0.5), 0 0 0 1px var(--color-border);
+  --shadow-input-focus: 0 0 0 3px var(--color-lilac-glow);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1rem 3rem 1rem;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(182, 154, 232, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(209, 232, 178, 0.04) 0%, transparent 35%);
+  background-attachment: fixed;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Container & Main Layout
+   -------------------------------------------------------------------------- */
+.app-container {
+  width: 100%;
+  max-width: var(--max-width-card);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. Header & Branding
+   -------------------------------------------------------------------------- */
+.main-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 38px;
+  height: 46px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(182, 154, 232, 0.3));
+  transition: transform var(--transition-fast);
+}
+
+.brand-container:hover .brand-logo {
+  transform: scale(1.05) rotate(-3deg);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+.brand-tagline {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--color-lilac);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.brand-slogan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background-color: rgba(182, 154, 232, 0.08);
+  border: 1px solid rgba(182, 154, 232, 0.18);
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  color: var(--color-green);
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   5. Card Layout
+   -------------------------------------------------------------------------- */
+.form-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   6. Introduction Section
+   -------------------------------------------------------------------------- */
+.intro-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.intro-title {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.intro-description {
+  font-size: 1.02rem;
+  color: var(--color-lavender);
+  line-height: 1.6;
+}
+
+.intro-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.3rem;
+}
+
+.intro-aux {
+  font-size: 0.88rem;
+  color: var(--color-gray);
+  flex: 1 1 300px;
+}
+
+.time-estimate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--color-green);
+  background-color: rgba(209, 232, 178, 0.08);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(209, 232, 178, 0.2);
+  white-space: nowrap;
+}
+
+/* Deadline banner notice */
+.deadline-banner {
+  margin-top: 0.85rem;
+  background-color: rgba(182, 154, 232, 0.08);
+  border: 1px solid rgba(182, 154, 232, 0.25);
+  border-left: 4px solid var(--color-lilac);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.deadline-badge {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-lilac);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.deadline-text {
+  font-size: 0.9rem;
+  color: var(--color-white);
+  line-height: 1.45;
+}
+
+.deadline-text strong {
+  color: var(--color-green);
+}
+
+/* --------------------------------------------------------------------------
+   7. Progress Bar & Indicator
+   -------------------------------------------------------------------------- */
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+}
+
+.step-counter {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-lilac);
+}
+
+.progress-percent {
+  font-size: 0.82rem;
+  color: var(--color-gray);
+  font-weight: 500;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-input);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-lilac) 0%, var(--color-green) 100%);
+  border-radius: var(--radius-pill);
+  transition: width var(--transition-normal);
+}
+
+.step-dots {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--bg-input);
+  border: 1px solid var(--color-gray);
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.step-dot.active {
+  background-color: var(--color-lilac);
+  border-color: var(--color-lilac);
+  transform: scale(1.3);
+  box-shadow: 0 0 8px var(--color-lilac-glow);
+}
+
+.step-dot.completed {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+}
+
+/* --------------------------------------------------------------------------
+   8. Steps & Form Fields
+   -------------------------------------------------------------------------- */
+.form-step {
+  border: none;
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.35s ease-out;
+}
+
+.form-step.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-heading {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-white);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.form-label {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 1.4;
+}
+
+.form-label.required::after {
+  content: " *";
+  color: var(--color-lilac);
+  font-weight: 700;
+}
+
+.form-label-sub {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-lavender);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.field-hint {
+  font-size: 0.85rem;
+  color: var(--color-gray);
+  margin-bottom: 0.25rem;
+}
+
+.field-note {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+  font-style: italic;
+  margin-top: 0.35rem;
+}
+
+/* Input & Textarea Elements */
+.form-input,
+.form-textarea {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(168, 163, 181, 0.45);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  background-color: var(--bg-input-focus);
+  border-color: var(--color-lilac);
+  box-shadow: var(--shadow-input-focus);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.date-input {
+  max-width: 240px;
+  color-scheme: dark;
+}
+
+/* --------------------------------------------------------------------------
+   9. Options Grid (Radio & Checkboxes)
+   -------------------------------------------------------------------------- */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+@media (min-width: 640px) {
+  .options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background-color: var(--bg-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.option-card:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--color-border-hover);
+}
+
+.option-card:has(input:checked) {
+  background-color: rgba(182, 154, 232, 0.12);
+  border-color: var(--color-lilac);
+  box-shadow: 0 0 12px rgba(182, 154, 232, 0.15);
+}
+
+.option-card input[type="radio"],
+.option-card input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom Radio Circle */
+.custom-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.custom-radio::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-lilac);
+  transform: scale(0);
+  transition: transform var(--transition-fast);
+}
+
+.option-card input[type="radio"]:checked + .custom-radio {
+  border-color: var(--color-lilac);
+}
+
+.option-card input[type="radio"]:checked + .custom-radio::after {
+  transform: scale(1);
+}
+
+/* Custom Checkbox Square */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.custom-checkbox::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid var(--bg-primary);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform var(--transition-fast);
+  margin-top: -2px;
+}
+
+.option-card input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: var(--color-lilac);
+  border-color: var(--color-lilac);
+}
+
+.option-card input[type="checkbox"]:checked + .custom-checkbox::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.option-text {
+  font-size: 0.92rem;
+  color: var(--color-white);
+  line-height: 1.35;
+}
+
+.highlight-option {
+  border-color: rgba(209, 232, 178, 0.3);
+}
+
+/* Sub-field and Conditional Boxes */
+.conditional-box,
+.sub-field-box {
+  margin-top: 0.85rem;
+  background-color: rgba(33, 30, 41, 0.6);
+  border: 1px solid rgba(182, 154, 232, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.conditional-box.hidden {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   10. Error Messages & Validation Styling
+   -------------------------------------------------------------------------- */
+.error-message {
+  display: none;
+  font-size: 0.84rem;
+  color: var(--color-error);
+  background-color: var(--color-error-bg);
+  border: 1px solid rgba(255, 107, 129, 0.3);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.35rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.error-message.visible {
+  display: block;
+}
+
+.form-group.has-error .form-input,
+.form-group.has-error .form-textarea {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 2px rgba(255, 107, 129, 0.2);
+}
+
+.form-group.has-error .option-card {
+  border-color: rgba(255, 107, 129, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   11. Review Step (Step 5)
+   -------------------------------------------------------------------------- */
+.review-intro {
+  font-size: 0.95rem;
+  color: var(--color-lavender);
+  margin-bottom: 1rem;
+}
+
+.review-summary-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.review-card {
+  background-color: var(--bg-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(182, 154, 232, 0.12);
+  padding-bottom: 0.6rem;
+}
+
+.review-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-lilac);
+}
+
+.btn-edit {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-lavender);
+  font-size: 0.78rem;
+  font-family: var(--font-body);
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-edit:hover {
+  background-color: rgba(182, 154, 232, 0.15);
+  border-color: var(--color-lilac);
+  color: var(--color-white);
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.review-question {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-gray);
+}
+
+.review-answer {
+  font-size: 0.95rem;
+  color: var(--color-white);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.review-answer.empty {
+  font-style: italic;
+  color: rgba(168, 163, 181, 0.5);
+}
+
+/* Submit Action Box */
+.submit-action-box {
+  margin-top: 1.5rem;
+  background-color: rgba(182, 154, 232, 0.06);
+  border: 1px solid rgba(182, 154, 232, 0.2);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.submit-box-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.submit-box-desc {
+  font-size: 0.88rem;
+  color: var(--color-gray);
+  line-height: 1.5;
+}
+
+/* Send Notice Box */
+.send-notice-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background-color: rgba(209, 232, 178, 0.12);
+  border: 1px solid rgba(209, 232, 178, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.send-notice-box.hidden {
+  display: none;
+}
+
+.send-notice-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.send-notice-content strong {
+  font-size: 0.92rem;
+  color: var(--color-green);
+  display: block;
+}
+
+.send-notice-content p {
+  font-size: 0.84rem;
+  color: var(--color-white);
+  margin-top: 2px;
+}
+
+.submit-buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 580px) {
+  .submit-buttons-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #0b2512;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-email {
+  background-color: var(--color-lilac);
+  color: var(--bg-primary);
+}
+
+.btn-email:hover {
+  background-color: var(--color-lilac-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-lilac-glow);
+}
+
+/* --------------------------------------------------------------------------
+   12. Navigation Buttons (Bottom Bar)
+   -------------------------------------------------------------------------- */
+.form-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0.5rem;
+}
+
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-gray);
+  color: var(--color-lavender);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(168, 163, 181, 0.12);
+  border-color: var(--color-lavender);
+  color: var(--color-white);
+}
+
+.btn-primary {
+  background-color: var(--color-lilac);
+  border: 1px solid var(--color-lilac);
+  color: var(--bg-primary);
+  margin-left: auto;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-lilac-hover);
+  border-color: var(--color-lilac-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px var(--color-lilac-glow);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   13. Footer Credit
+   -------------------------------------------------------------------------- */
+.main-footer {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.footer-text {
+  font-size: 0.82rem;
+  color: var(--color-gray);
+}
+
+/* --------------------------------------------------------------------------
+   14. Responsiveness & Accessibility
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  body {
+    padding: 1rem 0.5rem 2rem 0.5rem;
+  }
+
+  .form-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .intro-title {
+    font-size: 1.5rem;
+  }
+
+  .brand-name {
+    font-size: 1.7rem;
+  }
+
+  .form-navigation {
+    flex-direction: row;
+  }
+
+  .btn-nav {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.88rem;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

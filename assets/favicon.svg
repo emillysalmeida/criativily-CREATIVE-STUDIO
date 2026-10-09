@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="16" fill="#292632"/>
+  <g transform="translate(7, 2)">
+    <path d="M 25 56 C 24 40 26 25 25 8" stroke="#D1E8B2" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 25 46 C 18 42 12 36 25 44" fill="#D1E8B2"/>
+    <path d="M 25 44 C 32 40 38 34 25 42" fill="#D1E8B2"/>
+    <!-- Lavender petals simplified for crisp display -->
+    <circle cx="21" cy="28" r="4.5" fill="#B69AE8"/>
+    <circle cx="29" cy="27" r="4.5" fill="#9B7EDE"/>
+    <circle cx="25" cy="24" r="4" fill="#EDE5FA"/>
+    <circle cx="21" cy="19" r="4" fill="#9B7EDE"/>
+    <circle cx="29" cy="18" r="4" fill="#B69AE8"/>
+    <circle cx="25" cy="15" r="3.5" fill="#EDE5FA"/>
+    <circle cx="22" cy="11" r="3.5" fill="#B69AE8"/>
+    <circle cx="28" cy="10" r="3.5" fill="#9B7EDE"/>
+    <circle cx="25" cy="7" r="3" fill="#EDE5FA"/>
+  </g>
+</svg>
